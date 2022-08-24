@@ -1,0 +1,25 @@
+<div class="site-branding-area" th:fragment="branding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="logo">
+                    <h1><a th:href="@{/api/v1}"><img th:src="@{/resources/img/logo.png}" alt=""></a></h1>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="search">
+                    <label>
+                        <input type="text" class="form-control" placeholder="Have a question? Ask Now">
+                    </label>
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="shopping-item">
+                    <a th:href="@{/api/v1/cart}">Cart - <span class="cart-amunt">$100</span> <i
+                            class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
