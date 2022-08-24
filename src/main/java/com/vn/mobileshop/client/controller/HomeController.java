@@ -26,7 +26,6 @@ public class HomeController {
     public String goHomePage(Model model) {
         List<Product> listProd = productService.getAllProd();
         List<Brand> listBrand = brandService.findAllBrand();
-        System.out.println(listProd.toString());
         model.addAttribute("listProd" , listProd);
         model.addAttribute("listBrand" , listBrand);
         return "view/home";

@@ -1660,3 +1660,22 @@ Login
 }
 .fa-medium { font-size: 20px; }
 .inline-block { display: inline-block; }
+
+.product-carousel {
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+}
+
+.product-carousel .single-product {
+    min-width: 24%;
+    margin-right: 10px;
+}
+
+.product-f-image img{
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -117,7 +117,7 @@
                                 </div>
                             </div>
 
-                            <h2><a href="single-product.html" th:utext="${product.name}">Samsung Galaxy s5- 2015</a></h2>
+                            <h2><a th:href="@{/api/v1/prod/{id}(id=${product.id})}" th:utext="${product.name}"></a></h2>
 
                             <div class="product-carousel-price">
                                 <ins>$ <span th:utext="${product.priceSale}"></span></ins>
@@ -197,7 +197,7 @@
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img th:src="@{/resources/img/product-6.jpg}" alt="">
+                                <img th:src="@{/resources/img/product-5.jpg}" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
                                         cart</a>
@@ -217,7 +217,8 @@
             </div>
         </div>
     </div>
-</div> <!-- End main content area -->
+</div>
+<!-- End main content area -->
 
 <!-- Start brands-area -->
 <div class="brands-area">
@@ -228,19 +229,20 @@
                 <div class="brand-wrapper">
                     <div class="brand-list" >
 <!--                        <img th:src="@{${'/resources/img/brand/' + brand.imgName}}"  th:each="brand : ${listBrand}"/>-->
-                        <img th:src="@{/resources/img/brand1.png}" alt="">
-                        <img th:src="@{/resources/img/brand6.png}" alt="">
-                        <img th:src="@{/resources/img/brand3.png}" alt="">
-                        <img th:src="@{/resources/img/brand2.png}" alt="">
-                        <img th:src="@{/resources/img/brand4.png}" alt="">
-                        <img th:src="@{/resources/img/brand5.png}" alt="">
-                        <img th:src="@{/resources/img/brand6.png}" alt="">
+                        <img th:src="@{/resources/img/brand/brand1.png}" alt="">
+                        <img th:src="@{/resources/img/brand/brand6.png}" alt="">
+                        <img th:src="@{/resources/img/brand/brand3.png}" alt="">
+                        <img th:src="@{/resources/img/brand/brand2.png}" alt="">
+                        <img th:src="@{/resources/img/brand/brand4.png}" alt="">
+                        <img th:src="@{/resources/img/brand/brand5.png}" alt="">
+                        <img th:src="@{/resources/img/brand/brand6.png}" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div> <!-- End brands area -->
+</div>
+<!-- End brands area -->
 
 <!-- Start product-widget-area -->
 <div class="product-widget-area">
@@ -411,7 +413,8 @@
             </div>
         </div>
     </div>
-</div> <!-- End product widget area -->
+</div>
+<!-- End product widget area -->
 
 <!-- Start footer-top-area -->
 <div th:insert="~{view/fragments/footer.html :: footer-top}"></div>

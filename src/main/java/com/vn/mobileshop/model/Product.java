@@ -1,18 +1,13 @@
 package com.vn.mobileshop.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,8 +23,6 @@ public class Product {
 
     private String name;
 
-    @OneToOne
-    private Brand brand;
 
     private Integer quantity;
 
@@ -49,7 +42,10 @@ public class Product {
 
     private boolean status;
 
-    @OneToMany(mappedBy = "idReview" , fetch = FetchType.LAZY)
-    private List<Review> reviews;
+    @OneToOne
+    private Brand brand;
+
+    @OneToMany(mappedBy = "product" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private List<Review> reviews = new ArrayList<>();
 
 }
