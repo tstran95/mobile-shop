@@ -23,8 +23,9 @@ public class Product {
 
     private String name;
 
-
     private Integer quantity;
+
+    private Integer ram;
 
     private Integer storage;
 

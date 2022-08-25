@@ -4,11 +4,14 @@ import com.vn.mobileshop.client.services.BrandService;
 import com.vn.mobileshop.client.services.ProductService;
 import com.vn.mobileshop.model.Brand;
 import com.vn.mobileshop.model.Product;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Controller
@@ -24,7 +27,9 @@ public class HomeController {
 
     @GetMapping
     public String goHomePage(Model model) {
-        List<Product> listProd = productService.getAllProd();
+        int currentPage = 0;
+        int maxRecordPage = 8;
+        List<Product> listProd = productService.getAllProd(currentPage , maxRecordPage);
         List<Brand> listBrand = brandService.findAllBrand();
         model.addAttribute("listProd" , listProd);
         model.addAttribute("listBrand" , listBrand);

@@ -90,41 +90,41 @@
             </div>
 
             <div class="col-md-8">
-                <div class="product-content-right">
+                <div class="product-content-right" th:object="${product}">
                     <div class="product-breadcroumb">
-                        <a href="">Home</a>
-                        <a href="">Category Name</a>
-                        <a href="">Sony Smart TV - 2015</a>
+                        <a th:href="@{/api/v1}">Home</a>
+                        <a th:href="@{/api/v1}" th:utext="${product.brand.name}"></a>
+                        <a th:href="@{/api/v1}" th:utext="${product.name}"></a>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="product-images">
                                 <div class="product-main-img">
-                                    <img th:src="@{/resources/img/product-2.jpg}" alt="">
+                                    <img th:src="@{${'/resources/img/' + product.img}}" alt="">
                                 </div>
 
                                 <div class="product-gallery">
-                                    <img th:src="@{/resources/img/product-thumb-1.jpg}" alt="">
-                                    <img th:src="@{/resources/img/product-thumb-2.jpg}" alt="">
-                                    <img th:src="@{/resources/img/product-thumb-3.jpg}" alt="">
+                                    <img th:src="@{${'/resources/img/' + product.imgThumb}}" alt="">
+                                    <img th:src="@{${'/resources/img/' + product.imgThumb}}" alt="">
+                                    <img th:src="@{${'/resources/img/' + product.imgThumb}}" alt="">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="product-inner">
-                                <h2 class="product-name">Sony Smart TV - 2015</h2>
+                                <h2 class="product-name" th:utext="${product.name}">Sony Smart TV - 2015</h2>
                                 <div class="product-inner-price">
-                                    <ins>$700.00</ins>
-                                    <del>$100.00</del>
+                                    <ins>$ <span th:utext="${product.priceSale}"></span></ins>
+                                    <del>$ <span th:utext="${product.price}"></span></del>
                                 </div>
                                 <div class="product-capacity btn-group">
 
                                     <button type="button" class="product-capacity-detail btn btn-default col-xs-4">
                                         <div class="capacity-content">
-                                            <span>8GB-256GB</span>
-                                            <span>21.290.000 đ</span>
+                                            <span><span th:utext="${product.ram}"></span>GB-<span th:utext="${product.storage}"></span>GB</span>
+                                            <span><span th:utext="${product.priceSale}"></span> $</span>
                                         </div>
                                     </button>
 

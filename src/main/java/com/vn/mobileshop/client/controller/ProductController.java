@@ -1,11 +1,15 @@
 package com.vn.mobileshop.client.controller;
 
 import com.vn.mobileshop.client.services.ProductService;
+import com.vn.mobileshop.model.Product;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.awt.print.Pageable;
 
 @Controller
 @RequestMapping("/api/v1/prod")
@@ -18,13 +22,17 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public String singleProd(@PathVariable Long id, Model model) {
-        model.addAttribute("product" , productService.findProdById(id));
+        Product product = productService.findProdById(id);
+        System.err.println(product.getBrand().getName());
+        model.addAttribute("product" , product);
         return "view/single-product";
     }
 
     @GetMapping("/all")
     public String showAllProd(Model model) {
-        model.addAttribute("listProd" , productService.getAllProd());
+        int currentPage = 0;
+        int maxRecordPage = 12;
+        model.addAttribute("listProd" , productService.getAllProd(currentPage , maxRecordPage));
         return "view/shop";
     }
 }
