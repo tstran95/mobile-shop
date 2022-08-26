@@ -1,19 +1,19 @@
 package com.vn.mobileshop.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,26 +21,18 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class Account {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long account_id;
+    private Long role_id;
 
-    private String firstName;
+    private String roleName;
 
-    private String lastName;
-
-    private String email;
-
-    private String userName;
-
-    private String password;
-
-    private String passConfirm;
-
-    private Integer gender;
-
-    @ManyToMany(mappedBy = "accounts")
-    Set<Role> roles = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Account_Role",
+            joinColumns = { @JoinColumn(name = "role_id") },
+            inverseJoinColumns = { @JoinColumn(name = "account_id") }
+    )
+    private Set<Account> accounts = new HashSet<>();
 }
