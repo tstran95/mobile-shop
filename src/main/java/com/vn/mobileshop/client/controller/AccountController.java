@@ -1,17 +1,23 @@
 package com.vn.mobileshop.client.controller;
 
+import com.vn.mobileshop.client.services.AccountService;
 import com.vn.mobileshop.model.Account;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/api/v1/account")
 public class AccountController {
+    private final AccountService accountService;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
     @ModelAttribute
     Account setupForm () {
         return new Account();
@@ -35,17 +41,17 @@ public class AccountController {
 
     @GetMapping("create")
     public String createAccount(){
+        System.out.println(accountService.findAllAccount().get(3).getRoles().size());
         return "view/create-account";
     }
 
     @PostMapping("create")
     public String createAccountPost(@Valid @ModelAttribute("account") Account account, BindingResult bindingResult){
         account.isPasswordsEqual();
-//        bindingResult.addError();
         if (bindingResult.hasErrors()) {
             return "view/create-account";
         }
-        System.out.println(account);
-        return "view/create-account";
+        accountService.save(account);
+        return "view/login";
     }
 }

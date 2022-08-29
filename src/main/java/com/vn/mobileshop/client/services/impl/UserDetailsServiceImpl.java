@@ -27,6 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountDAO.findByUserName(username);
+        System.out.println(account);
         List<Role> roles = roleDAO.findAll();
         if (Objects.isNull(account)) throw new RuntimeException("Cant find user");
         List<GrantedAuthority> authorities = new ArrayList<>();
