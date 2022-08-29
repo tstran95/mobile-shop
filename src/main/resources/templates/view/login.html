@@ -1,43 +1,14 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Mobile Shop</title>
-
-	<!-- Google Fonts -->
-	<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
-		  type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-
-	<!-- Bootstrap -->
-	<link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
-
-	<!-- Font Awesome -->
-	<link rel="stylesheet" th:href="@{/resources/css/font-awesome.min.css}">
-
-	<!-- Custom CSS -->
-	<link rel="stylesheet" th:href="@{/resources/css/owl.carousel.css}">
-	<link rel="stylesheet" th:href="@{/resources/css/style.css}">
-	<link rel="stylesheet" th:href="@{/resources/css/responsive.css}">
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-</head>
+<head th:insert="~{view/fragments/head.html :: head(title= 'Login')}"></head>
 
 <body class="templatemo-bg-gray">
 	<div class="container">
 		<div class="col-md-12">
 			<h1 class="margin-bottom-15 text-center">Login Form</h1>
 			<form class="form-horizontal templatemo-container templatemo-login-form-1 margin-bottom-30" role="form"
-				action="#" method="post">
+				  th:action="@{/api/v1/account/login}" method="post">
 				<div class="form-group">
 					<div class="col-xs-12">
 						<div class="control-wrapper">
@@ -69,7 +40,7 @@
 					<div class="col-md-12">
 						<div class="control-wrapper">
 							<input type="submit" value="Log in" class="btn btn-info">
-							<a href="forgot-password.html" class="text-right pull-right">Forgot password?</a>
+							<a th:href="@{/api/v1/account/forget}" class="text-right pull-right">Forgot password?</a>
 						</div>
 					</div>
 				</div>
@@ -88,7 +59,7 @@
 				</div>
 			</form>
 			<div class="text-center">
-				<a href="create-account.html" class="templatemo-create-new">Create new account <i
+				<a th:href="@{/api/v1/account/create}" class="templatemo-create-new">Create new account <i
 						class="fa fa-arrow-circle-o-right"></i></a>
 			</div>
 		</div>

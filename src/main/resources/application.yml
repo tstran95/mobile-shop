@@ -12,5 +12,7 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
+  main:
+    allow-circular-references: true
 server:
   port: 6969
